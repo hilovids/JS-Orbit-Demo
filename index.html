@@ -9,7 +9,7 @@
 
 <div>
     <canvas id="canvas" width="100" height="100"></canvas>
-    <h1>Orbit Demo</h1>
+    <h1 class="Title">Orbit Demo</h1>
     <div class="grid">
         <button id="overlay" class="btn btn-danger" onclick="spawnBody()">Spawn Random Body</button>
         <button id="overlay" class="btn btn-danger" onclick="spawnOrbitingBody()">Spawn Orbiting Body</button>
@@ -17,6 +17,8 @@
         <button id="overlay" class="btn btn-danger" onclick="enableTwinSun()">Twin Sun Model</button>
         <button id="overlay" class="btn btn-danger" onclick="init()">Reset</button>
     </div>
+    <p>Press one of the buttons to spawn a planet, or drag to send one flying around the sun!</p>
+    <p>Modes: Static One Sun, Dynamic One Planet, Static Two Suns</p>
 </div>
 </body>
 <script src = "Orbitals.js" id="canvasContext"></script>

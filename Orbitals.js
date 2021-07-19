@@ -3,9 +3,11 @@ const context = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let bodyToDraw = new Image();
-//bodyToDraw.src = 'planet.png';
-let srcArray = ['sun.png', 'planet.png', 'moon.png'];
+let planet = new Image();
+planet.src = 'planet.png';
+
+let sunPic = new Image();
+sunPic.src = 'sun.png';
 
 let bodyArray = [];
 let maxSize = 10;
@@ -96,16 +98,23 @@ class Body{
         }
     }
     draw(index){
-        bodyToDraw.src = this.image;
+        let bodyToDraw;
+        let strokeTextContent;
+        if(index < 0) {
+            bodyToDraw = sunPic;
+            strokeTextContent = "";
+        } else {
+            bodyToDraw = planet;
+            strokeTextContent = "Planet " + index;
+        }
         dotArray.unshift([this.x,this.y,this.color])
         if(dotArray.length >= maxDots){
             dotArray.pop();
         }
         context.drawImage(bodyToDraw,this.x - (50 * this.size / 2), this.y - (50 * this.size / 2), 50 * this.size, 50 * this.size);
-
         context.font = "30px Arial";
         context.strokeStyle = "#FFFFFF";
-        context.strokeText("Planet  " + index, this.x + this.size, this.y + this.size, 100);
+        context.strokeText(strokeTextContent, this.x + this.size, this.y + this.size, 100);
     }
 }
 
@@ -141,7 +150,6 @@ function init(){
     dotArray = [];
     sun = new Body(1000, canvas.width / 2, canvas.height / 2, 0, 0);
     sun.size = 3;
-    //sun.image = 'sun.png';
     if(!stableSystem){
         let sun = new Body(1000, canvas.width / 2, canvas.height / 2, 0, 0);
         sun.size = 3;
